@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, memo } from 'react';
+import { memo } from 'react';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 
 const Overlay = memo(function Overlay({ progress }: { progress: MotionValue<number> }) {
