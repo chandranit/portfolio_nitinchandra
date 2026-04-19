@@ -1,37 +1,39 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useScroll, useTransform } from 'framer-motion';
+import { useScroll, useTransform, useSpring } from 'framer-motion';
 import Overlay from './Overlay';
 
-const frameCount = 75;
+const frameCount = 192;
 
 export default function ScrollyCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const contextRef = useRef<CanvasRenderingContext2D | null>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const [isReady, setIsReady] = useState(false);
+  const renderConfig = useRef({ offsetX: 0, offsetY: 0, drawWidth: 0, drawHeight: 0 });
 
   // Preload Images
   useEffect(() => {
-    const loadedImages: HTMLImageElement[] = [];
     let loadedCount = 0;
+    const items: HTMLImageElement[] = [];
     
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
-      // Format number to 2 digits. The sequence starts at 00.
-      const frameStr = i.toString().padStart(2, '0');
-      img.src = `/sequence/frame_${frameStr}_delay-0.066s.png`;
+      const frameStr = i.toString().padStart(3, '0');
+      img.src = `/sequence/frame_${frameStr}_delay-0.041s.png`;
       img.onload = () => {
         loadedCount++;
         if (loadedCount === frameCount) {
-          // Trigger first render immediately once all loaded
-          if (canvasRef.current && loadedImages[0]) {
-            renderFrame(0, loadedImages);
-          }
+          setIsReady(true);
+          // Initial render
+          updateRenderConfig();
+          renderFrame(frameCount - 1); // Start at the "reverse" start
         }
       };
-      loadedImages.push(img);
+      items.push(img);
     }
-    setImages(loadedImages);
+    imagesRef.current = items;
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -39,31 +41,21 @@ export default function ScrollyCanvas() {
     offset: ["start start", "end end"]
   });
 
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [0, frameCount - 1]);
+  // Add Momentum/Smoothness
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
-  useEffect(() => {
-    if (images.length === 0) return;
-    
-    // Subscribe to framer motion changes
-    const unsubscribe = frameIndex.on("change", (latest) => {
-      const currentFrameIndex = Math.floor(latest);
-      requestAnimationFrame(() => renderFrame(currentFrameIndex, images));
-    });
-    return () => unsubscribe();
-  }, [frameIndex, images]);
+  // Map progress to frame index (Reverse mapping as previously requested)
+  const frameIndex = useTransform(smoothProgress, [0, 1], [frameCount - 1, 0]);
 
-  const renderFrame = (index: number, imgs: HTMLImageElement[]) => {
+  const updateRenderConfig = () => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Safety fallback
-    const validIndex = Math.max(0, Math.min(index, frameCount - 1));
-    const img = imgs[validIndex];
-    if (!img) return;
-
-    // Object-fit: cover logic
+    if (!canvas || imagesRef.current.length === 0) return;
+    
+    const img = imagesRef.current[0];
     const canvasRatio = canvas.width / canvas.height;
     const imgRatio = img.width / img.height;
 
@@ -80,40 +72,61 @@ export default function ScrollyCanvas() {
       offsetY = (canvas.height - drawHeight) / 2;
     }
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Darken images slightly for better text contrast if we wanted to, 
-    // but the global background is already #121212. We can draw the image natively.
-    ctx.globalAlpha = 0.6; // dims image so text pops perfectly
+    renderConfig.current = { offsetX, offsetY, drawWidth, drawHeight };
+  };
+
+  const renderFrame = (index: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    if (!contextRef.current) {
+      contextRef.current = canvas.getContext('2d', { alpha: false });
+    }
+    const ctx = contextRef.current;
+    if (!ctx) return;
+
+    const validIndex = Math.max(0, Math.min(Math.floor(index), frameCount - 1));
+    const img = imagesRef.current[validIndex];
+    if (!img) return;
+
+    const { offsetX, offsetY, drawWidth, drawHeight } = renderConfig.current;
+
+    ctx.globalAlpha = 0.6;
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     ctx.globalAlpha = 1.0;
   };
 
   useEffect(() => {
-    // Handle resizing
-    const resizeCanvas = () => {
+    if (!isReady) return;
+    return frameIndex.on("change", (latest) => {
+      requestAnimationFrame(() => renderFrame(latest));
+    });
+  }, [isReady, frameIndex]);
+
+  useEffect(() => {
+    const handleResize = () => {
       if (canvasRef.current) {
         canvasRef.current.width = window.innerWidth;
         canvasRef.current.height = window.innerHeight;
-        // re-render current frame after resize
-        if (images.length > 0) {
-          renderFrame(Math.floor(frameIndex.get()), images);
-        }
+        updateRenderConfig();
+        renderFrame(frameIndex.get());
       }
     };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    return () => window.removeEventListener('resize', resizeCanvas);
-  }, [images, frameIndex]);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isReady, frameIndex]);
 
   return (
     <div ref={containerRef} className="relative h-[500vh] w-full bg-[#121212]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <canvas
           ref={canvasRef}
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover transition-opacity duration-1000 ${isReady ? 'opacity-100' : 'opacity-0'}`}
         />
-        <Overlay progress={scrollYProgress} />
+        <Overlay progress={smoothProgress} />
       </div>
     </div>
   );
 }
+
