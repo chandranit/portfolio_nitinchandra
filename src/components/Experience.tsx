@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: 'Senior Software Engineer',
+    title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Dec 2024 - Dec 2025',
     project: 'Energizing Coach App',
@@ -11,7 +11,7 @@ const experiences = [
     skills: ['C++', 'Python', 'Bash', 'CIVIC Platform', 'CI/CD Pipelines', 'Agile/Scrum', 'Black Duck']
   },
   {
-    title: 'Senior Software Engineer',
+    title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Aug 2022 - Dec 2024',
     project: 'Vitalsensing App',
@@ -49,7 +49,7 @@ export default function Experience() {
               className="relative"
             >
               <div className="absolute -left-10 md:-left-[55px] top-1 h-5 w-5 rounded-full bg-[#121212] border-2 border-indigo-400" />
-              
+
               <div className="group rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-8 transition-all hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 shadow-2xl">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                   <h3 className="text-2xl font-bold text-white tracking-tight">{exp.title}</h3>
@@ -57,18 +57,18 @@ export default function Experience() {
                     {exp.date}
                   </span>
                 </div>
-                
+
                 <h4 className="text-lg font-medium text-gray-300 mb-1">{exp.company}</h4>
                 <p className="text-sm font-semibold text-indigo-300 mb-6 uppercase tracking-wider">Project: {exp.project}</p>
-                
+
                 <p className="text-base text-gray-400 leading-relaxed mb-6">
                   {exp.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map(skill => (
-                    <span 
-                      key={skill} 
+                    <span
+                      key={skill}
                       className="text-xs font-semibold text-gray-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md tracking-wide"
                     >
                       {skill}
