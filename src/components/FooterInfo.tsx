@@ -18,12 +18,13 @@ export default function FooterInfo() {
             <div className="space-y-6">
               <div className="group border-l-2 border-indigo-500/30 pl-5 transition-all hover:border-indigo-400">
                 <h4 className="text-lg font-semibold text-white">National Institute of Technology (NIT) Trichy</h4>
-                <p className="text-sm font-semibold text-indigo-400 mt-1 uppercase tracking-wider">2022</p>
-                <p className="text-sm text-gray-400 mt-2 font-medium">ME/M.Tech</p>
+                <p className="text-sm font-semibold text-indigo-400 mt-1 uppercase tracking-wider">2020 - 2022</p>
+                <p className="text-sm text-gray-400 mt-2 font-medium">M.Tech in Data Analytics</p>
               </div>
               <div className="group border-l-2 border-indigo-500/30 pl-5 transition-all hover:border-indigo-400">
                 <h4 className="text-lg font-semibold text-white">Dr. APJ Abdul Kalam Technical University</h4>
-                <p className="text-sm font-semibold text-indigo-400 mt-1 uppercase tracking-wider">BE/B.Tech/Bs</p>
+                <p className="text-sm font-semibold text-indigo-400 mt-1 uppercase tracking-wider">2015 - 2019</p>
+                <p className="text-sm text-gray-400 mt-2 font-medium">B.Tech in Information Technology</p>
               </div>
             </div>
           </motion.div>

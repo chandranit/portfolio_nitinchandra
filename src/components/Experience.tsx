@@ -7,16 +7,36 @@ const experiences = [
     company: 'Mercedes-Benz Research and Development India',
     date: 'Dec 2024 - Dec 2025',
     project: 'Energizing Coach App',
-    description: 'Managed change requests via STARC/Jira, and independently led Agile execution as Scrum/Release Manager. Ensured ASPICE compliance. Diagnosed coredump issues. Led "FAST" and "AutoDuck" process automations mapping to testing and Black Duck tool processes.',
-    skills: ['C++', 'Python', 'Bash', 'CIVIC Platform', 'CI/CD Pipelines', 'Agile/Scrum', 'Black Duck']
+    description: [
+      'Designed and delivered a Web UI tool within aggressive project timelines.',
+      'Implemented key product enhancements, including the Recommendation Toggle feature for the FUP1 release.',
+      'Diagnosed and resolved critical software issues, including coredumps and high-priority defects, ensuring timely delivery.',
+      'Generated and presented FOSS Due Diligence reports for multiple releases.',
+      'Established the TUT flashing process and a comprehensive CIVIC validation setup.',
+      'Led pre-release verification, software approval audits, and retrospectives in the role of Release Manager.',
+      'Defined and baselined release, defect, and project tool management strategies in alignment with ASPICE processes.',
+      'Served as Scrum Master, facilitating Agile ceremonies and promoting effective team collaboration.',
+      'Delivered automation initiatives, including FAST (Flashing Automation of Software Testing) and AutoDuck (Black Duck process automation).'
+    ],
+    skills: ['C++', 'Python', 'Bash', 'CIVIC', 'Jira', 'STARC', 'CI/CD', 'ASPICE', 'Black Duck', 'TUT', 'Web UI']
   },
   {
     title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Aug 2022 - Dec 2024',
     project: 'Vitalsensing App',
-    description: 'Ported SSA algorithm to the CIVIC platform yielding 70%+ unit test coverage and 0 Coverity violations. Executed MATLAB code generation. Authored software design and deployed deep learning inference estimations for latency.',
-    skills: ['C++', 'MATLAB/Simulink', 'Bash', 'Deep Learning', 'CMake', 'Yocto', 'Coverity']
+    description: [
+      'Ported the SSA signal-processing algorithm from Python to production-grade C++ for the CIVIC platform.',
+      'Developed robust, maintainable C++ code with over 70% unit test coverage and zero Coverity violations.',
+      'Integrated algorithm libraries and validated end-to-end application functionality.',
+      'Compiled and optimized production code, generating runtime performance reports for analysis and enhancement.',
+      'Implemented communication interfaces for MPIC Control Manager and MPIC IR Service.',
+      'Designed and developed the Frame Ready Queue to ensure reliable synchronization and data flow.',
+      'Integrated MCM, MPIC IR, ImageProcessing, and LibVitalAlgo components into the Vital Sensing application.',
+      'Authored software design documentation to support long-term maintainability and scalability.',
+      'Successfully demonstrated the VitalHRApp during TechDay.'
+    ],
+    skills: ['C++', 'Python', 'CMake', 'Bash', 'Unit Testing', 'Coverity', 'Git', 'GitLab/GitHub', 'Jira', 'Confluence']
   }
 ];
 
@@ -61,9 +81,17 @@ export default function Experience() {
                 <h4 className="text-lg font-medium text-gray-300 mb-1">{exp.company}</h4>
                 <p className="text-sm font-semibold text-indigo-300 mb-6 uppercase tracking-wider">Project: {exp.project}</p>
 
-                <p className="text-base text-gray-400 leading-relaxed mb-6">
-                  {exp.description}
-                </p>
+                <div className="text-base text-gray-400 leading-relaxed mb-6">
+                  {Array.isArray(exp.description) ? (
+                    <ul className="list-disc pl-5 space-y-2">
+                      {exp.description.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{exp.description}</p>
+                  )}
+                </div>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map(skill => (
