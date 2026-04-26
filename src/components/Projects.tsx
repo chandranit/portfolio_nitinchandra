@@ -6,17 +6,22 @@ const projects = [
   {
     title: 'Energizing Coach App',
     category: 'Release & Test Management',
-    image: '/projects/project1.png'
+    image: '/projects/energizing_coach_app_1777232438592.png'
   },
   {
     title: 'Vitalsensing App',
     category: 'Algorithm Porting & Deep Learning',
-    image: '/projects/project2.png'
+    image: '/projects/vitalsensing_app_1777232453838.png'
   },
   {
-    title: 'FAST & AutoDuck',
-    category: 'Automation & CI/CD Tooling',
-    image: '/projects/project3.png'
+    title: 'FAST (Flashing Automation Software Testing)',
+    category: 'Automation Pipeline',
+    image: '/projects/fast_automation_1777232508775.png'
+  },
+  {
+    title: 'AutoDuck (FOSS Verification & Documents Generation)',
+    category: 'Open Source Compliance & Security',
+    image: '/projects/autoduck_automation_1777232524180.png'
   }
 ];
 
@@ -32,7 +37,7 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
-              Selected Work
+              Key Engineering Works
             </h2>
             <div className="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent" />
           </motion.div>
