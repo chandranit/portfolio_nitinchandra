@@ -7,7 +7,7 @@ const skills = [
   "Visual Studio", "GitLab", "CI/CD", "Docker", "Agile/SCRUM"
 ];
 
-const SkillText = memo(({ text, index, progress, total }: { text: string, index: number, progress: MotionValue<number>, total: number }) => {
+const SkillText = memo(function SkillText({ text, index, progress, total }: { text: string, index: number, progress: MotionValue<number>, total: number }) {
   const start = 0.25 + (index * (0.7 / total));
   const peak1 = start + 0.015;
   const peak2 = start + (0.7 / total) - 0.015;
