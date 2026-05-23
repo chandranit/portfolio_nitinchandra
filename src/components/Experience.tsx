@@ -5,38 +5,66 @@ const experiences = [
   {
     title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
-    date: 'Dec 2024 - Dec 2025',
-    project: 'Energizing Coach App',
+    date: 'Jan 2025 - Present',
+    project: 'OLU (Onboard Logic Unit)',
     description: [
-      'Designed and delivered a Web UI tool within aggressive project timelines.',
-      'Implemented key product enhancements, including the Recommendation Toggle feature for the FUP1 release.',
-      'Diagnosed and resolved critical software issues, including coredumps and high-priority defects, ensuring timely delivery.',
-      'Generated and presented FOSS Due Diligence reports for multiple releases.',
-      'Established the TUT flashing process and a comprehensive CIVIC validation setup.',
-      'Led pre-release verification, software approval audits, and retrospectives in the role of Release Manager.',
-      'Defined and baselined release, defect, and project tool management strategies in alignment with ASPICE processes.',
-      'Served as Scrum Master, facilitating Agile ceremonies and promoting effective team collaboration.',
-      'Delivered automation initiatives, including FAST (Flashing Automation of Software Testing) and AutoDuck (Black Duck process automation).'
+      'Working on IoT-based onboard device responsible for OTA/FOTA software updates and charging management systems for commercial EV fleets.',
+      'Contributing to firmware and middleware layers developed in C++ and Rust.',
+      'Developing GUI-based flashing utility to simplify NAND/CoreOS flashing workflows for non-technical users.',
+      'Integrating secure unlocking and flashing workflows using cloud-based secret-key retrieval mechanisms.',
+      'Working on PKI certificate rotation automation for secure device communication and self-signed certificate renewal.',
+      'Supporting middleware integration and system-level flashing validation workflows.'
     ],
-    skills: ['C++', 'Python', 'Bash', 'CIVIC', 'Jira', 'STARC', 'CI/CD', 'ASPICE', 'Black Duck', 'TUT', 'Web UI']
+    skills: ['C++', 'Rust', 'IoT', 'OTA/FOTA', 'Firmware', 'PKI', 'NAND Flashing', 'Security']
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Mercedes-Benz Research and Development India',
+    date: 'Dec 2024 - Dec 2025',
+    project: 'Energizing Coach Application (Linux Platform)',
+    description: [
+      'Worked on onboard automotive wellness application responsible for driver refreshment and fatigue-reduction experiences.',
+      'Handled production defect triaging, debugging, and resolution for critical Woka1/Woka2/Woka3 tickets under strict deadlines.',
+      'Managed release activities including pre-release audits, compliance verification, MR reviews, and post-release validation.',
+      'Coordinated with QA, developers, and stakeholders to ensure stable production releases.',
+      'Identified and escalated FOSS compliance risks using Black Duck analysis and presented mitigation strategies in technical forums.',
+      'Contributed to Agile execution as Scrum Master by facilitating sprint planning, retrospectives, stand-ups, and blocker resolution.',
+      'Developed automation initiatives including FAST (Flashing Automation of Software Testing) and AutoDuck (FOSS automation workflow).',
+      'Conducted multiple knowledge-sharing sessions on OOP concepts, Agile workflows, and embedded software lifecycle.'
+    ],
+    skills: ['C++', 'Linux', 'Release Management', 'Defect Triaging', 'Black Duck', 'Scrum Master', 'FAST', 'AutoDuck', 'Agile']
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Mercedes-Benz Research and Development India',
+    date: 'Jun 2023 - Nov 2024',
+    project: 'Energizing Comfort (Android Platform)',
+    description: [
+      'Contributed to initial Android platform setup for automotive wellness application.',
+      'Worked with MVVM architecture and Kotlin-based Android development workflows.',
+      'Configured Gradle-based development environments and custom emulator setups.',
+      'Participated in internal Android training and conducted KT sessions for teammates.'
+    ],
+    skills: ['Kotlin', 'Android', 'MVVM', 'Gradle', 'Emulator Setup']
   },
   {
     title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Aug 2022 - Dec 2024',
-    project: 'Vitalsensing App',
+    project: 'VitalSensing Application',
     description: [
-      'Ported the SSA signal-processing algorithm from Python to production-grade C++ for the CIVIC platform.',
-      'Developed robust, maintainable C++ code with over 70% unit test coverage and zero Coverity violations.',
-      'Integrated algorithm libraries and validated end-to-end application functionality.',
-      'Compiled and optimized production code, generating runtime performance reports for analysis and enhancement.',
-      'Implemented communication interfaces for MPIC Control Manager and MPIC IR Service.',
-      'Designed and developed the Frame Ready Queue to ensure reliable synchronization and data flow.',
-      'Integrated MCM, MPIC IR, ImageProcessing, and LibVitalAlgo components into the Vital Sensing application.',
-      'Authored software design documentation to support long-term maintainability and scalability.',
-      'Successfully demonstrated the VitalHRApp during TechDay.'
+      'Worked on camera-based RPPG (Remote Photoplethysmography) solution for heart-rate and respiration sensing using IR camera streams in automotive environments.',
+      'Ported Python-based signal-processing algorithms to embedded C++ platform running on CIVIC ECU.',
+      'Designed timestamp-based synchronization logic between image frames and IR metadata streams for accurate ROI extraction and heart-rate estimation.',
+      'Implemented Butterworth, Bandpass, Kalman filtering, FFT integration, and signal post-processing functionalities.',
+      'Integrated MPIC IR services, MCM interfaces, image-processing modules, and VitalAlgo libraries into the application stack.',
+      'Performed cross-compilation using ARM toolchains and worked extensively with CMake/Make build systems.',
+      'Developed unit tests using GTest and maintained 70%+ test coverage with zero Coverity violations.',
+      'Conducted GPU/CPU runtime analysis and evaluated MATLAB-to-C++ code generation strategies for performance optimization.',
+      'Migrated application components to QNX Safe OS.',
+      'Presented architecture and algorithm flow during company-wide technical events and received strong appreciation for communication and technical clarity.'
     ],
-    skills: ['C++', 'Python', 'CMake', 'Bash', 'Unit Testing', 'Coverity', 'Git', 'GitLab/GitHub', 'Jira', 'Confluence']
+    skills: ['C++', 'Python', 'CMake', 'Embedded Linux', 'QNX', 'RPPG', 'Signal Processing', 'GTest', 'Coverity', 'ARM']
   }
 ];
 
