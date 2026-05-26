@@ -15,25 +15,49 @@ export default function ScrollyCanvas() {
 
   // Preload Images
   useEffect(() => {
-    let loadedCount = 0;
-    const items: HTMLImageElement[] = [];
+    const items: HTMLImageElement[] = new Array(frameCount);
+    const initialIndex = frameCount - 1;
     
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      const frameStr = i.toString().padStart(3, '0');
-      img.src = `/sequence/frame_${frameStr}_delay-0.041s.png`;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === frameCount) {
-          setIsReady(true);
-          // Initial render
-          updateRenderConfig();
-          renderFrame(frameCount - 1); // Start at the "reverse" start
-        }
+    // 1. Load the initial frame immediately
+    const initialImg = new Image();
+    const frameStr = initialIndex.toString().padStart(3, '0');
+    initialImg.src = `/sequence/frame_${frameStr}_delay-0.041s.png`;
+    
+    initialImg.onload = () => {
+      items[initialIndex] = initialImg;
+      imagesRef.current = items;
+      
+      // Set ready and render initial frame immediately
+      setIsReady(true);
+      updateRenderConfig();
+      renderFrame(initialIndex);
+      
+      // 2. Load the remaining frames in the background progressively
+      let currentIndex = frameCount - 2; // Load backwards since user scrolls down
+      const loadNext = () => {
+        if (currentIndex < 0) return;
+        
+        const img = new Image();
+        const fStr = currentIndex.toString().padStart(3, '0');
+        img.src = `/sequence/frame_${fStr}_delay-0.041s.png`;
+        img.onload = () => {
+          items[currentIndex] = img;
+          currentIndex--;
+          if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+            (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => loadNext());
+          } else {
+            setTimeout(loadNext, 5);
+          }
+        };
+        img.onerror = () => {
+          currentIndex--;
+          loadNext();
+        };
       };
-      items.push(img);
-    }
-    imagesRef.current = items;
+      
+      // Start background preloading sequence
+      loadNext();
+    };
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -48,14 +72,17 @@ export default function ScrollyCanvas() {
     restDelta: 0.001
   });
 
-  // Map progress to frame index (Reverse mapping as previously requested)
+  // Map progress to frame index (Reverse mapping)
   const frameIndex = useTransform(smoothProgress, [0, 1], [frameCount - 1, 0]);
 
   const updateRenderConfig = () => {
     const canvas = canvasRef.current;
     if (!canvas || imagesRef.current.length === 0) return;
     
-    const img = imagesRef.current[0];
+    // Find the first available image that is loaded
+    const img = imagesRef.current.find(image => image !== undefined);
+    if (!img) return;
+    
     const canvasRatio = canvas.width / canvas.height;
     const imgRatio = img.width / img.height;
 
@@ -86,7 +113,26 @@ export default function ScrollyCanvas() {
     if (!ctx) return;
 
     const validIndex = Math.max(0, Math.min(Math.floor(index), frameCount - 1));
-    const img = imagesRef.current[validIndex];
+    let img = imagesRef.current[validIndex];
+    
+    // Fallback to the closest loaded frame if the targeted frame is still loading
+    if (!img) {
+      let closestIndex = -1;
+      let minDistance = Infinity;
+      for (let i = 0; i < frameCount; i++) {
+        if (imagesRef.current[i]) {
+          const dist = Math.abs(i - validIndex);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIndex = i;
+          }
+        }
+      }
+      if (closestIndex !== -1) {
+        img = imagesRef.current[closestIndex];
+      }
+    }
+    
     if (!img) return;
 
     const { offsetX, offsetY, drawWidth, drawHeight } = renderConfig.current;

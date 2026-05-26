@@ -3,28 +3,28 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: 'Software Engineer',
+    title: 'Senior Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
-    date: 'Jan 2025 - Present',
+    date: 'April 2026 - Present',
     project: 'OLU (Onboard Logic Unit)',
     description: [
       'Working on IoT-based onboard device responsible for OTA/FOTA software updates and charging management systems for commercial EV fleets.',
-      'Contributing to firmware and middleware layers developed in C++ and Rust.',
-      'Developing GUI-based flashing utility to simplify NAND/CoreOS flashing workflows for non-technical users.',
+      'Contributing to firmware and middleware layers developed in C++ and Java.',
+      'Developing GUI-based flashing utility to simplify NAD Flashing and Corus Flashing and custsw flashing workflows for non-technical users.',
       'Integrating secure unlocking and flashing workflows using cloud-based secret-key retrieval mechanisms.',
       'Working on PKI certificate rotation automation for secure device communication and self-signed certificate renewal.',
       'Supporting middleware integration and system-level flashing validation workflows.'
     ],
-    skills: ['C++', 'Rust', 'IoT', 'OTA/FOTA', 'Firmware', 'PKI', 'NAND Flashing', 'Security']
+    skills: ['C++', 'Java', 'IoT', 'OTA/FOTA', 'Firmware', 'PKI', 'NAD Flashing', 'Corus Flashing', 'custsw flashing', 'Security']
   },
   {
-    title: 'Software Engineer',
+    title: 'Software Engineer | Defect Manager | Release Manager | SCRUM Master',
     company: 'Mercedes-Benz Research and Development India',
-    date: 'Dec 2024 - Dec 2025',
+    date: 'Jan 2025 - Dec 2025',
     project: 'Energizing Coach Application (Linux Platform)',
     description: [
       'Worked on onboard automotive wellness application responsible for driver refreshment and fatigue-reduction experiences.',
-      'Handled production defect triaging, debugging, and resolution for critical Woka1/Woka2/Woka3 tickets under strict deadlines.',
+      'Handled production defect triaging, debugging, and resolution for critical VOCA1/VOCA2/VOCA3 tickets under strict deadlines.',
       'Managed release activities including pre-release audits, compliance verification, MR reviews, and post-release validation.',
       'Coordinated with QA, developers, and stakeholders to ensure stable production releases.',
       'Identified and escalated FOSS compliance risks using Black Duck analysis and presented mitigation strategies in technical forums.',
@@ -35,11 +35,12 @@ const experiences = [
     skills: ['C++', 'Linux', 'Release Management', 'Defect Triaging', 'Black Duck', 'Scrum Master', 'FAST', 'AutoDuck', 'Agile']
   },
   {
-    title: 'Software Engineer',
+    title: 'Android Developer',
     company: 'Mercedes-Benz Research and Development India',
-    date: 'Jun 2023 - Nov 2024',
+    date: 'Jan 2026 - March 2026',
     project: 'Energizing Comfort (Android Platform)',
     description: [
+      'Took 30 days External Training provided by Mercedes-Benz.',
       'Contributed to initial Android platform setup for automotive wellness application.',
       'Worked with MVVM architecture and Kotlin-based Android development workflows.',
       'Configured Gradle-based development environments and custom emulator setups.',

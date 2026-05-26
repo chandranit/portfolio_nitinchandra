@@ -5,7 +5,7 @@ import Image from 'next/image';
 const projects = [
   {
     title: 'OLU (Onboard Logic Unit)',
-    category: 'IoT OTA/FOTA Platform',
+    category: 'IoT Device Platform',
     image: '/projects/olu_iot_dashboard.png'
   },
   {

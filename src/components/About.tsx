@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['C++', 'Rust', 'Python', 'Kotlin', 'Bash']
+    skills: ['C++', 'Java', 'Python', 'Kotlin', 'Bash']
   },
   {
     title: 'Embedded & Systems',
-    skills: ['Embedded Linux', 'QNX', 'ARM Architecture', 'OTA/FOTA', 'IoT Systems', 'Cross Compilation']
+    skills: ['Embedded Linux', 'Android', 'ARM Architecture', 'IoT Device', 'IoT Systems', 'Cross Compilation']
   },
   {
     title: 'Tools & Technologies',
@@ -19,12 +19,8 @@ const skillCategories = [
     skills: ['GTest', 'Coverity', 'Black Duck', 'Regression Testing', 'Delta Testing', 'CI/CD']
   },
   {
-    title: 'Libraries & Frameworks',
-    skills: ['OpenCV', 'FFT Libraries', 'JSON Handling']
-  },
-  {
     title: 'Concepts',
-    skills: ['OOP', 'Signal Processing', 'MVVM Architecture', 'Agile/Scrum', 'Release Management', 'Defect Management']
+    skills: ['DSA', 'Advanced DSA', 'OOP', 'Signal Processing', 'MVVM Architecture', 'Agile/Scrum', 'Release Management', 'Defect Management']
   }
 ];
 
@@ -51,13 +47,13 @@ export default function About() {
               <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/20 transition-all duration-500" />
               
               <p className="text-gray-300 text-lg leading-relaxed font-normal">
-                Embedded Software Engineer with <strong className="text-indigo-400 font-semibold">~4 years of experience</strong> in Automotive, Embedded Linux/QNX, IoT, and C++ development.
+                Embedded Software Engineer with <strong className="text-indigo-400 font-semibold">~4 years of experience</strong> in Automotive, Embedded Linux, IoT, and C++ development.
               </p>
               <p className="text-gray-400 text-base leading-relaxed mt-4">
-                Experienced in system integration, OTA/FOTA workflows, embedded application development, release management, defect triaging, and real-time synchronization systems.
+                Experienced in system integration, SOTA/FOTA IOT workflows, embedded application development, release management, defect triaging, and real-time synchronization systems.
               </p>
               <p className="text-gray-400 text-base leading-relaxed mt-4">
-                Skilled in C++, Rust, Linux, CI/CD pipelines, cross-compilation, signal processing, and automotive wellness applications with a strong background in technical presentations and Agile collaboration.
+                Skilled in C++, Java, Linux, CI/CD pipelines, cross-compilation, signal processing, and automotive wellness applications with a strong background in technical presentations and Agile collaboration.
               </p>
             </div>
           </motion.div>

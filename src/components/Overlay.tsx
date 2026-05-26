@@ -3,8 +3,8 @@ import { memo } from 'react';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 
 const skills = [
-  "C++", "Rust", "Python", "Kotlin", "Bash",
-  "Embedded Linux", "QNX", "OTA/FOTA", "CMake", "GTest",
+  "C++", "Java", "Python", "Kotlin", "Bash",
+  "Embedded Linux", "Android", "IoT device", "CMake", "GTest",
   "Coverity", "Docker", "CI/CD", "Signal Processing", "Agile/Scrum"
 ];
 
