@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: 'Senior Software Engineer',
+    title: 'Senior Software Developer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'April 2026 - Present',
     project: 'OLU (Onboard Logic Unit)',
@@ -16,6 +16,20 @@ const experiences = [
       'Supporting middleware integration and system-level flashing validation workflows.'
     ],
     skills: ['C++', 'Java', 'IoT', 'OTA/FOTA', 'Firmware', 'PKI', 'NAD Flashing', 'Corus Flashing', 'custsw flashing', 'Security']
+  },
+  {
+    title: 'Android Developer',
+    company: 'Mercedes-Benz Research and Development India',
+    date: 'Jan 2026 - March 2026',
+    project: 'Energizing Comfort (Android Platform)',
+    description: [
+      'Took 30 days External Training provided by Mercedes-Benz.',
+      'Contributed to initial Android platform setup for automotive wellness application.',
+      'Worked with MVVM architecture and Kotlin-based Android development workflows.',
+      'Configured Gradle-based development environments and custom emulator setups.',
+      'Participated in internal Android training and conducted KT sessions for teammates.'
+    ],
+    skills: ['Kotlin', 'Android', 'MVVM', 'Gradle', 'Emulator Setup']
   },
   {
     title: 'Software Engineer | Defect Manager | Release Manager | SCRUM Master',
@@ -35,21 +49,7 @@ const experiences = [
     skills: ['C++', 'Linux', 'Release Management', 'Defect Triaging', 'Black Duck', 'Scrum Master', 'FAST', 'AutoDuck', 'Agile']
   },
   {
-    title: 'Android Developer',
-    company: 'Mercedes-Benz Research and Development India',
-    date: 'Jan 2026 - March 2026',
-    project: 'Energizing Comfort (Android Platform)',
-    description: [
-      'Took 30 days External Training provided by Mercedes-Benz.',
-      'Contributed to initial Android platform setup for automotive wellness application.',
-      'Worked with MVVM architecture and Kotlin-based Android development workflows.',
-      'Configured Gradle-based development environments and custom emulator setups.',
-      'Participated in internal Android training and conducted KT sessions for teammates.'
-    ],
-    skills: ['Kotlin', 'Android', 'MVVM', 'Gradle', 'Emulator Setup']
-  },
-  {
-    title: 'Software Engineer',
+    title: 'Senior Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Aug 2022 - Dec 2024',
     project: 'VitalSensing Application',

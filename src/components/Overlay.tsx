@@ -43,7 +43,7 @@ const Overlay = memo(function Overlay({ progress }: { progress: MotionValue<numb
       >
         <h1 className="text-5xl md:text-8xl font-extrabold tracking-tighter text-white drop-shadow-2xl">
           Nitin Chandra<br />
-          <span className="text-3xl md:text-6xl text-white/60 block mt-2">Embedded Software Engineer</span>
+          <span className="text-3xl md:text-6xl text-white/60 block mt-2">Senior Software Developer</span>
         </h1>
       </motion.div>
 
