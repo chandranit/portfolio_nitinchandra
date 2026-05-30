@@ -4,9 +4,19 @@ import Image from 'next/image';
 
 const projects = [
   {
+    title: 'OLU (Onboard Logic Unit)',
+    category: 'IoT Device Platform',
+    image: '/projects/olu_iot_dashboard.png'
+  },
+  {
     title: 'Energizing Coach App',
     category: 'Release & Test Management',
     image: '/projects/energizing_coach_app_1777232438592.png'
+  },
+  {
+    title: 'Energizing Comfort (Android)',
+    category: 'Automotive Wellness System',
+    image: '/projects/energizing_comfort_app.png'
   },
   {
     title: 'Vitalsensing App',

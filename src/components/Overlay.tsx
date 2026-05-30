@@ -3,8 +3,9 @@ import { memo } from 'react';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 
 const skills = [
-  "C++", "Python", "CMake", "Bash", "Java", "Kotlin",
-  "Visual Studio", "GitLab", "CI/CD", "Docker", "Agile/SCRUM"
+  "C++", "Java", "Python", "Kotlin", "Bash",
+  "Embedded Linux", "Android", "IoT device", "CMake", "GTest",
+  "Coverity", "Docker", "CI/CD", "Signal Processing", "Agile/Scrum"
 ];
 
 const SkillText = memo(function SkillText({ text, index, progress, total }: { text: string, index: number, progress: MotionValue<number>, total: number }) {
@@ -42,7 +43,7 @@ const Overlay = memo(function Overlay({ progress }: { progress: MotionValue<numb
       >
         <h1 className="text-5xl md:text-8xl font-extrabold tracking-tighter text-white drop-shadow-2xl">
           Nitin Chandra<br />
-          <span className="text-3xl md:text-6xl text-white/60 block mt-2">Senior Software Engineer</span>
+          <span className="text-3xl md:text-6xl text-white/60 block mt-2">Senior Software Developer</span>
         </h1>
       </motion.div>
 

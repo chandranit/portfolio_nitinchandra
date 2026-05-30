@@ -46,7 +46,13 @@ export default function FooterInfo() {
               </div>
               <div className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl transition-colors hover:bg-white/10">
                 <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Based In</p>
-                <p className="text-lg font-medium text-gray-200">Bangalore <span className="text-gray-600 mx-2">|</span> +91-6363252498</p>
+                <p className="text-lg font-medium text-gray-200">Bangalore</p>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl transition-colors hover:bg-white/10">
+                <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Mobile Number</p>
+                <p className="text-sm font-medium text-gray-300">
+                  {"If you know me you already have my number. If you don't, then click on the button below and connect with me on LinkedIn."}
+                </p>
               </div>
               <div className="flex gap-4 mt-6">
                 <a href="https://www.linkedin.com/in/nitin-chandra111" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-indigo-500/20">
