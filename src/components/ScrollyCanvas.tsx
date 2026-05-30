@@ -18,7 +18,7 @@ export default function ScrollyCanvas() {
 <<<<<<< HEAD
     let loadedCount = 0;
     const items: HTMLImageElement[] = [];
-    
+
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
       const frameStr = i.toString().padStart(3, '0');
@@ -38,26 +38,26 @@ export default function ScrollyCanvas() {
 =======
     const items: HTMLImageElement[] = new Array(frameCount);
     const initialIndex = frameCount - 1;
-    
+
     // 1. Load the initial frame immediately
     const initialImg = new Image();
     const frameStr = initialIndex.toString().padStart(3, '0');
     initialImg.src = `/sequence/frame_${frameStr}_delay-0.041s.png`;
-    
+
     initialImg.onload = () => {
       items[initialIndex] = initialImg;
       imagesRef.current = items;
-      
+
       // Set ready and render initial frame immediately
       setIsReady(true);
       updateRenderConfig();
       renderFrame(initialIndex);
-      
+
       // 2. Load the remaining frames in the background progressively
       let currentIndex = frameCount - 2; // Load backwards since user scrolls down
       const loadNext = () => {
         if (currentIndex < 0) return;
-        
+
         const img = new Image();
         const fStr = currentIndex.toString().padStart(3, '0');
         img.src = `/sequence/frame_${fStr}_delay-0.041s.png`;
@@ -75,7 +75,7 @@ export default function ScrollyCanvas() {
           loadNext();
         };
       };
-      
+
       // Start background preloading sequence
       loadNext();
     };
@@ -104,14 +104,14 @@ export default function ScrollyCanvas() {
   const updateRenderConfig = () => {
     const canvas = canvasRef.current;
     if (!canvas || imagesRef.current.length === 0) return;
-    
+
 <<<<<<< HEAD
     const img = imagesRef.current[0];
 =======
     // Find the first available image that is loaded
     const img = imagesRef.current.find(image => image !== undefined);
     if (!img) return;
-    
+
 >>>>>>> holdMyBeer/chatGPTUpdates
     const canvasRatio = canvas.width / canvas.height;
     const imgRatio = img.width / img.height;
@@ -135,7 +135,7 @@ export default function ScrollyCanvas() {
   const renderFrame = (index: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     if (!contextRef.current) {
       contextRef.current = canvas.getContext('2d', { alpha: false });
     }
@@ -147,7 +147,7 @@ export default function ScrollyCanvas() {
     const img = imagesRef.current[validIndex];
 =======
     let img = imagesRef.current[validIndex];
-    
+
     // Fallback to the closest loaded frame if the targeted frame is still loading
     if (!img) {
       let closestIndex = -1;
@@ -165,7 +165,7 @@ export default function ScrollyCanvas() {
         img = imagesRef.current[closestIndex];
       }
     }
-    
+
 >>>>>>> holdMyBeer/chatGPTUpdates
     if (!img) return;
 
