@@ -15,27 +15,6 @@ export default function ScrollyCanvas() {
 
   // Preload Images
   useEffect(() => {
-<<<<<<< HEAD
-    let loadedCount = 0;
-    const items: HTMLImageElement[] = [];
-
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      const frameStr = i.toString().padStart(3, '0');
-      img.src = `/sequence/frame_${frameStr}_delay-0.041s.png`;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === frameCount) {
-          setIsReady(true);
-          // Initial render
-          updateRenderConfig();
-          renderFrame(frameCount - 1); // Start at the "reverse" start
-        }
-      };
-      items.push(img);
-    }
-    imagesRef.current = items;
-=======
     const items: HTMLImageElement[] = new Array(frameCount);
     const initialIndex = frameCount - 1;
 
@@ -79,7 +58,6 @@ export default function ScrollyCanvas() {
       // Start background preloading sequence
       loadNext();
     };
->>>>>>> holdMyBeer/chatGPTUpdates
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -94,25 +72,17 @@ export default function ScrollyCanvas() {
     restDelta: 0.001
   });
 
-<<<<<<< HEAD
-  // Map progress to frame index (Reverse mapping as previously requested)
-=======
-  // Map progress to frame index (Reverse mapping)
->>>>>>> holdMyBeer/chatGPTUpdates
+// Map progress to frame index (Reverse mapping)
   const frameIndex = useTransform(smoothProgress, [0, 1], [frameCount - 1, 0]);
 
   const updateRenderConfig = () => {
     const canvas = canvasRef.current;
     if (!canvas || imagesRef.current.length === 0) return;
 
-<<<<<<< HEAD
-    const img = imagesRef.current[0];
-=======
     // Find the first available image that is loaded
     const img = imagesRef.current.find(image => image !== undefined);
     if (!img) return;
 
->>>>>>> holdMyBeer/chatGPTUpdates
     const canvasRatio = canvas.width / canvas.height;
     const imgRatio = img.width / img.height;
 
@@ -143,9 +113,6 @@ export default function ScrollyCanvas() {
     if (!ctx) return;
 
     const validIndex = Math.max(0, Math.min(Math.floor(index), frameCount - 1));
-<<<<<<< HEAD
-    const img = imagesRef.current[validIndex];
-=======
     let img = imagesRef.current[validIndex];
 
     // Fallback to the closest loaded frame if the targeted frame is still loading
@@ -166,7 +133,7 @@ export default function ScrollyCanvas() {
       }
     }
 
->>>>>>> holdMyBeer/chatGPTUpdates
+
     if (!img) return;
 
     const { offsetX, offsetY, drawWidth, drawHeight } = renderConfig.current;
