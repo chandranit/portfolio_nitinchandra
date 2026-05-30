@@ -49,7 +49,7 @@ const experiences = [
     skills: ['C++', 'Linux', 'Release Management', 'Defect Triaging', 'Black Duck', 'Scrum Master', 'FAST', 'AutoDuck', 'Agile']
   },
   {
-    title: 'Senior Software Engineer',
+    title: 'Software Engineer',
     company: 'Mercedes-Benz Research and Development India',
     date: 'Aug 2022 - Dec 2024',
     project: 'VitalSensing Application',
